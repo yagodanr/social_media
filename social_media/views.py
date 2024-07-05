@@ -1,9 +1,9 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, TemplateView
+from django.views.generic import ListView, CreateView, TemplateView, DetailView
 
 
-from .models import UserPost, ChannelPost
+from .models import UserPost, ChannelPost, Channel
 
 
 # Create your views here.
@@ -19,4 +19,7 @@ class MainPage(TemplateView):
 
         
         return context
-    
+
+class ChannelView(DetailView):
+    model = Channel
+
