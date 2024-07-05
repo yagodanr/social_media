@@ -1,5 +1,10 @@
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    
+    <a href="{{ post.author.get_absolute_url }}" class="fs-2 link-underline link-underline-opacity-0 fw-bold">{{ post.author }}</a>
+    <h3 class="fs-5">{{ post.created_at }} {% if post.created_at != post.last_edit_at %}(last edited at {{ post.last_edit_at }}){% endif %}  </h3>
+    <p class="fs-5">{{ post.content }} </p>
 
-<h1 class="fs-2">{{ post.author }}</h1>
-<h3 class="fs-4">{{ post.created_at }} {% if post.created_at != post.last_edit_at %}(last edited at {{ post.last_edit_at }}){% endif %}  </h3>
-
-<p class="fs-5">{{ post.content }} </p>
+  </div>
+  <img src="..." class="card-img-top" alt="">
+</div>
