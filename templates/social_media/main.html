@@ -7,10 +7,7 @@
 
   
   {% for p in posts %}
-    <h1 class="fs-2">{{ p.author }}</h1>
-    <h3 class="fs-4">{{ p.created_at }} {% if p.created_at != p.last_edit_at %}(last edited at {{ p.last_edit_at }}){% endif %}  </h3>
-
-    <p class="fs-5">{{ p.content }} </p>
+    {% include 'social_media/post.html' with post=p only %}
 
   {% endfor %}
     
