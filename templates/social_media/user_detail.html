@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
 <div class="container">
-  <h1 class="fs-1">{{ author.username }}</h1>
+  <div class="d-flex align-items-center">
+    {% if author.photo %}
+      <img src="{{ author.photo.url }}" class="avatar rounded-circle img-thumbnail me-3" width="80rem" height="80rem">
+    {% else %}
+      <img src="{% static 'img/icon.svg' %}" class="avatar rounded-circle img-thumbnail me-3" width="80rem" height="80rem">
+    {% endif %}
+    
+    <h1 class="fs-1">{{ author.username }}</h1>
+
+  </div>
   {% if author.description != None %}
-    <h2 class="fs-2">{{ author.description }} </h2>
+    <h2 class="fs-2 mt-4">{{ author.description }} </h2>
   
   {% endif %}
 
