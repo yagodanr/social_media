@@ -6,6 +6,8 @@ from django.urls import reverse
 class Channel(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
+
+    photo = models.ImageField(upload_to="channel/%Y/%m/%d/", blank=True, null=True)
     
     members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="channels")
     following = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="following")
@@ -22,6 +24,7 @@ class Channel(models.Model):
 
 class Post(models.Model):
     content = models.TextField()
+    photo = models.ImageField(upload_to="post/%Y/%m/%d/", blank=True, null=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     last_edit_at = models.DateTimeField(auto_now=True)
