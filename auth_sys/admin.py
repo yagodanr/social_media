@@ -14,7 +14,7 @@ class MyUserAdmin(UserAdmin):
     list_filter = ('id', 'username', "email", "is_staff", "is_active",)
     
     fieldsets = (
-        (None, {"fields": ("username", "email", "password", 'photo', 'admin_photo')}),
+        (None, {"fields": ("username", "email", "password", ('admin_photo', 'photo'))}),
         ("Permissions", {"fields": ("is_staff", "is_active", "groups", "user_permissions")}),
     )
     readonly_fields = ['admin_photo']
