@@ -2,7 +2,7 @@ from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, TemplateView, DetailView
 
-
+from auth_sys.models import MyUser 
 from .models import UserPost, ChannelPost, Channel
 
 
@@ -22,4 +22,9 @@ class MainPage(TemplateView):
 
 class ChannelView(DetailView):
     model = Channel
+    
+class MyUserView(DetailView):
+    model = MyUser
+    template_name = "social_media/user_detail.html"
+    context_object_name = "author"
 

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+  <h1 class="fs-1">{{ author.username }}</h1>
+  {% if author.description != None %}
+    <h2 class="fs-2">{{ author.description }} </h2>
+  
+  {% endif %}
+
+  <hr>
+  {% for p in author.posts.all %}
+    {% include 'social_media/post.html' with post=p only %}
+
+  {% endfor %}
+
+</div>
+{% endblock content %}
+    
