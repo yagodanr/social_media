@@ -12,7 +12,7 @@ class MyUser(AbstractUser):
     def admin_photo(self):
         if self.photo:
             return mark_safe(f'<img src="{self.photo.url}" width=100>')
-    admin_photo.short_description = 'Image'
+    admin_photo.short_description = 'Photo'
     admin_photo.allow_tags = True
 
     def __str__(self) -> str:

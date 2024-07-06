@@ -9,7 +9,7 @@ class MyUserAdmin(UserAdmin):
     add_form = MyUserCreationForm
     form = MyUserChangeForm
     model = MyUser
-    list_display = ('id', 'username', "email", "is_staff", "is_active", 'admin_photo')
+    list_display = ('id', 'username', 'description', "email", "is_staff", "is_active", 'admin_photo')
     list_display_links = ('id', 'username')
     list_filter = ('id', 'username', "email", "is_staff", "is_active",)
     
@@ -22,7 +22,7 @@ class MyUserAdmin(UserAdmin):
         (None, {
             "classes": ("wide",),
             "fields": (
-                "username", "password1", "password2", "photo", "is_staff",
+                "username", "description", "password1", "password2", "photo", "is_staff",
                 "is_active", "groups", "user_permissions"
             )}
         ),
