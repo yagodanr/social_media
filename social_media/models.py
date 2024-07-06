@@ -32,6 +32,7 @@ class Post(models.Model):
     
     class Meta:
         abstract = True
+        ordering = ["-created_at"]
 
 class UserPost(Post):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts")
