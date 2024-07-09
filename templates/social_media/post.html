@@ -15,5 +15,8 @@
     <p class="fs-5">{{ post.content }} </p>
 
   </div>
-  <img src="..." class="card-img-top" alt="">
+  {% if post.photo %}
+    <img src="{{ post.photo.url }}" class="card-img-bottom rounded">
+  {% endif %}
+
 </div>
