@@ -42,7 +42,7 @@ class ChannelView(DetailView):
                 channel.save()
             
         
-        return super().get(request, *args, **kwargs)
+        return self.get(request, *args, **kwargs)
     
 class MyUserView(DetailView):
     model = MyUser
