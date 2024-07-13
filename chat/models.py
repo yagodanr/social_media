@@ -5,7 +5,7 @@ from django.conf import settings
 # Create your models here.
 class Chat(models.Model):
     name = models.CharField(max_length=255, null=True, blank=True)
-    members = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="chats")
 
     def __str__(self) -> str:
         if self.name is None:
