@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+
+<div class="row flex-fill">
+  <div class="col-1 border" style="width: 18rem;">
+    
+    <div class="d-flex flex-column">
+      <h2 class="display-3 text-info">Chats</h2>
+      <hr>
+
+      {% for chat in user.chats.all %}
+        <a href="{% url 'chat' chat.id %}" role="button" class="fs-3 btn btn-lg btn-primary flex-fill mt-3">{{ chat.name }}</a> 
+      {% endfor %}
+
+    </div>
+      
+
+  </div>
+  
+  <div class="col">
+    <h class="display-3 text-warning">{{ chat.name }}</h>
+    <hr>
+    <div class="d-flex flex-column-reverse">
+      {% for msg in chat.messages.all %}
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title text-info">{{ msg.sender.username }}</h5>
+          <h6 class="card-text">{{ msg.created_at }} {% if msg.last_edit_at != msg.created_at %}({{ msg.last_edit_at }}){% endif %}</h6>
+          <hr>
+          <p class="card-text">{{ msg.content }} </p>
+        </div>
+      </div>
+        
+      {% endfor %}
+
+    </div>
+      
+
+  </div>
+  
+</div>
+</div>
+
+{% endblock content %}
+    
+
