@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+  <div class="d-flex align-items-center">
+    {% if channel.photo %}
+      <img src="{{ channel.photo.url }}" class="avatar rounded-circle img-thumbnail me-3" width="80rem" height="80rem">
+    {% else %}
+      <img src="{% static 'img/icon.svg' %}" class="avatar rounded-circle img-thumbnail me-3" width="80rem" height="80rem">
+    {% endif %}
+    
+    <h1 class="fs-1">{{ channel.name }}</h1>
+
+    {% if user.is_authenticated %}
+      {% if user in channel.following.all %}
+        <form method="POST" action="{% url 'channel' channel.id %}" class="ms-auto">
+          {% csrf_token %}
+
+          <button type="submit" name="unfollow" class="btn btn-lg btn-danger">Unfollow</button>
+        </form>
+        
+      {% else %}
+        <form method="POST" action="{% url 'channel' channel.id %}" class="ms-auto">
+          {% csrf_token %}
+
+          <button type="submit" name="follow" class="btn btn-lg btn-primary">Follow</button>
+        </form>
+
+      {% endif %}
+    
+    {% endif %}
+
+  </div>
+  {% if channel.description != None %}
+    <h2 class="fs-2">{{ channel.description }} </h2>
+  
+  {% endif %}
+
+  <hr>
+  {% for p in channel.posts.all %}
+    {% include 'social_media/post.html' with post=p only %}
+
+  {% endfor %}
+
+</div>
+{% endblock content %}
+    

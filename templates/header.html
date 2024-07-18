@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'img/balloon-heart.svg' %}"/>
+<button class="btn btn-lg btn-primary sticky-top" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    {% if user.is_authenticated %}
+      <a href="{{ user.get_absolute_url }}">
+        {% if user.photo %}
+          <img src="{{ user.photo.url }}" class="avatar rounded-circle img-thumbnail" width="80rem" height="80rem">
+        {% else %}
+          <img src="{% static 'img/icon.svg' %}" class="avatar rounded-circle img-thumbnail" width="80rem" height="80rem">
+        {% endif %}
+      </a>
+
+      <form method="POST" action="{% url 'logout' %}" class="ms-2">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+      </form>
+    
+    {% else %}
+      <a href="{% url 'login' %}" class="btn btn-lg btn-primary">Login</a>
+      <a href="{% url 'register' %}" class="btn btn-lg btn-info ms-3">Register</a>
+
+
+    {% endif %}
+
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <a href="{% url 'main-page' %}" class="offcanvas-header link-underline link-underline-opacity-0">
+    <img src="{% static 'img/balloon-heart.svg' %}" width="60rem" height="60rem"">
+    <h5 class="offcanvas-title ms-3 fw-bold fs-3" id="offcanvasScrollingLabel">Basical Social media</h5>
+  </a>
+  <hr>
+  <div class="offcanvas-body">
+    <p>{% lorem 1 b random %}</p>
+    
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+
+  
+  {% for p in posts %}
+    {% include 'social_media/post.html' with post=p only %}
+
+  {% endfor %}
+    
+
+
+</div>
+
+
+{% endblock content %}
+    
+

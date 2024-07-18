@@ -1,0 +1,22 @@
+<div class="card" style="width: 60rem;">
+  <div class="card-body">
+    
+    <a href="{{ post.author.get_absolute_url }}" class="link-underline link-underline-opacity-0">
+      <div class="d-flex align-items-center">
+        {% if post.author.photo %}
+          <img src="{{ post.author.photo.url }}" class="avatar rounded-circle img-thumbnail me-3" width="80rem" height="80rem">
+        {% endif %}
+  
+        <p class="fs-2 fw-bold">{{ post.author }}</p>
+
+      </div>
+    </a>
+    <h3 class="fs-5">{{ post.created_at }} {% if post.created_at != post.last_edit_at %}(last edited at {{ post.last_edit_at }}){% endif %}  </h3>
+    <p class="fs-5">{{ post.content }} </p>
+
+  </div>
+  {% if post.photo %}
+    <img src="{{ post.photo.url }}" class="card-img-bottom rounded">
+  {% endif %}
+
+</div>
