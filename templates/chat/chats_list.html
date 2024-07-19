@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+
+<div class="row mb-5">
+  {% include 'chat/chat_search_form.html' %}
+
+</div>
+
+
+
+<div class="row d-flex">
+  <div class="col-1 border flex-fill">
+    
+    <div class="d-flex flex-column">
+      <h2 class="display-3 text-info">Chats</h2>
+      <hr>
+
+      {% for chat in user.chats.all %}
+        <a href="{% url 'chat' chat.id %}" role="button" class="fs-3 btn btn-lg btn-primary flex-fill mt-3">{{ chat.name }}</a> 
+      {% endfor %}
+
+    </div>
+      
+
+  </div>
+      
+
+  </div>
+  
+</div>
+</div>
+
+{% endblock content %}
+    
+
