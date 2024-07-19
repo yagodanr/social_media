@@ -2,9 +2,14 @@
 
 
 {% block content %}
-<div class="container d-flex justify-content-center">
+<div class="container">
 
-<div class="row flex-fill">
+<div class="row mb-5">
+  {% include 'chat/chat_search_form.html' %}
+  
+</div>
+
+<div class="row">
   <div class="col-1 border" style="width: 18rem;">
     
     <div class="d-flex flex-column">
@@ -29,7 +34,7 @@
         {% csrf_token %}
 
         <div class="card-body d-flex">
-          <input type="text" id="content" name="content" class="flex-fill fs-3" placeholder="Write a message">
+          <input type="text" id="content" name="content" class="form-control flex-fill fs-3" placeholder="Write a message">
           <button type="submit" class="btn btn-lg btn-primary ms-2">Send</button>
         </div>
 

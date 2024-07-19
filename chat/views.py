@@ -29,3 +29,13 @@ class ChatView(DetailView, LoginRequiredMixin):
         
         return self.get(request, *args, **kwargs)
 
+
+class ChatSearchView(TemplateView):
+    template_name = "chat/chat_search.html"
+    
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        if "search" in self.request.GET:
+            context["chats"] = Chat.objects.filter(name__contains=self.request.GET["search"])
+            
+        return context

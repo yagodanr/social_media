@@ -1,0 +1,6 @@
+<form method="GET" action="{% url 'chat_search' %}" class="d-flex">
+    {% csrf_token %}
+
+    <input type="text" id="search" name="search" class="form-control fs-3 flex-fill" placeholder="Search for new chats">
+
+</form>
