@@ -39,3 +39,25 @@ class ChatSearchView(TemplateView):
             context["chats"] = Chat.objects.filter(name__contains=self.request.GET["search"])
             
         return context
+    
+class ChatFollowView(TemplateView):
+    def post(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+        # if not request.user.is_authenticated:
+        #     return redirect("login")
+        
+        # if "content" in request.POST:
+        #     chat = self.get_object()
+            
+        #     msg = Message(sender=request.user, content=request.POST["content"], chat=chat)
+        #     msg.save()
+        user = request.user
+        if not user.is_authenticated:
+            return redirect("login")
+
+        chat = Chat.objects.get(id=self.kwargs["pk"])
+        
+        if user not in chat.members.all():
+            chat.members.add(user)
+            chat.save()        
+        
+        return redirect("chats")
